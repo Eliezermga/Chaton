@@ -13,6 +13,7 @@
 
     <!-- Sign In -->
     <string name="sign_in_subtitle">Bienvenue sur votre nouvelle messagerie préférée</string>
+    <string name="sign_in_with_google">Se connecter avec Google</string>
 
     <!-- Main -->
     <string name="no_chats_yet">Aucune discussion pour le moment</string>
@@ -28,6 +29,7 @@
     <string name="action_send">Envoyer</string>
 
     <!-- Settings -->
+    <string name="settings">Paramètres</string>
     <string name="enable_notifications">Activer les notifications</string>
 
 </resources>

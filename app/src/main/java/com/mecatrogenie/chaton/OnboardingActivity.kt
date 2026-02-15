@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -18,6 +19,8 @@ class OnboardingActivity : AppCompatActivity() {
 
     private lateinit var onboardingViewPager: ViewPager2
     private lateinit var nextButton: MaterialButton
+    private lateinit var skipButton: MaterialButton
+    private lateinit var getStartedButton: MaterialButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +37,8 @@ class OnboardingActivity : AppCompatActivity() {
 
         onboardingViewPager = findViewById(R.id.onboarding_view_pager)
         nextButton = findViewById(R.id.next_button)
+        skipButton = findViewById(R.id.skip_button)
+        getStartedButton = findViewById(R.id.get_started_button)
 
         val onboardingAdapter = OnboardingAdapter(
             listOf(
@@ -63,9 +68,13 @@ class OnboardingActivity : AppCompatActivity() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 if (position == onboardingAdapter.itemCount - 1) {
-                    nextButton.text = getString(R.string.finish)
+                    nextButton.visibility = View.GONE
+                    skipButton.visibility = View.GONE
+                    getStartedButton.visibility = View.VISIBLE
                 } else {
-                    nextButton.text = getString(R.string.next)
+                    nextButton.visibility = View.VISIBLE
+                    skipButton.visibility = View.VISIBLE
+                    getStartedButton.visibility = View.GONE
                 }
             }
         })
@@ -73,16 +82,26 @@ class OnboardingActivity : AppCompatActivity() {
         nextButton.setOnClickListener {
             if (onboardingViewPager.currentItem < onboardingAdapter.itemCount - 1) {
                 onboardingViewPager.currentItem += 1
-            } else {
-                // Mark onboarding as finished
-                val sharedPref = getSharedPreferences("onboarding", MODE_PRIVATE)
-                with(sharedPref.edit()) {
-                    putBoolean("finished", true)
-                    apply()
-                }
-                goToSignInActivity()
             }
         }
+
+        skipButton.setOnClickListener {
+            finishOnboarding()
+        }
+
+        getStartedButton.setOnClickListener {
+            finishOnboarding()
+        }
+    }
+
+    private fun finishOnboarding() {
+        // Mark onboarding as finished
+        val sharedPref = getSharedPreferences("onboarding", MODE_PRIVATE)
+        with(sharedPref.edit()) {
+            putBoolean("finished", true)
+            apply()
+        }
+        goToSignInActivity()
     }
 
     private fun onboardingFinished(): Boolean {
