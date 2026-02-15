@@ -1,7 +1,5 @@
 # Chaton
 
-![Capture d'écran de Chaton](https://i.imgur.com/URL_DE_VOTRE_CAPTURE_D_ECRAN.png)
-
 Chaton est une application de messagerie instantanée pour Android, conçue pour permettre des conversations simples et en temps réel. Elle s'appuie sur Firebase pour l'authentification, la base de données et les notifications.
 
 ## Fonctionnalités
