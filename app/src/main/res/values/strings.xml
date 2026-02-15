@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Chaton</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title_1">Bienvenue sur Chaton</string>
+    <string name="onboarding_description_1">Le meilleur endroit pour discuter avec vos amis et votre famille.</string>
+    <string name="onboarding_title_2">Restez Connecté</string>
+    <string name="onboarding_description_2">Une nouvelle façon de se connecter avec le monde.</string>
+    <string name="onboarding_title_3">Commencez</string>
+    <string name="onboarding_description_3">Créez un compte et commencez à discuter maintenant.</string>
+    <string name="next">Suivant</string>
+    <string name="finish">Terminer</string>
+
+    <!-- Sign In -->
+    <string name="sign_in_subtitle">Bienvenue sur votre nouvelle messagerie préférée</string>
+
+    <!-- Main -->
+    <string name="no_chats_yet">Aucune discussion pour le moment</string>
+    <string name="action_search">Rechercher</string>
+    <string name="action_settings">Paramètres</string>
+    <string name="action_sign_out">Se déconnecter</string>
+
+    <!-- New Chat -->
+    <string name="new_chat_title">Nouvelle discussion</string>
+
+    <!-- Chat -->
+    <string name="type_a_message">Écrivez un message</string>
+    <string name="action_send">Envoyer</string>
+
+    <!-- Settings -->
+    <string name="enable_notifications">Activer les notifications</string>
+
+</resources>

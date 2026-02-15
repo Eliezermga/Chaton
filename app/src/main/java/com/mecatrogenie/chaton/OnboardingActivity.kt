@@ -1,0 +1,116 @@
+package com.mecatrogenie.chaton
+
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
+import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+
+class OnboardingActivity : AppCompatActivity() {
+
+    private lateinit var onboardingViewPager: ViewPager2
+    private lateinit var nextButton: MaterialButton
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // Check if onboarding has been completed before
+        if (onboardingFinished()) {
+            goToSignInActivity()
+            return
+        }
+
+        setContentView(R.layout.activity_onboarding)
+
+        requestNotificationPermission()
+
+        onboardingViewPager = findViewById(R.id.onboarding_view_pager)
+        nextButton = findViewById(R.id.next_button)
+
+        val onboardingAdapter = OnboardingAdapter(
+            listOf(
+                OnboardingItem(
+                    image = "https://www.skyminds.net/wp-content/uploads/2007/07/socialisation-1-768x470.jpg",
+                    title = getString(R.string.onboarding_title_1),
+                    description = getString(R.string.onboarding_description_1)
+                ),
+                OnboardingItem(
+                    image = "https://www.skyminds.net/wp-content/uploads/2007/07/socialisation-1-768x470.jpg",
+                    title = getString(R.string.onboarding_title_2),
+                    description = getString(R.string.onboarding_description_2)
+                ),
+                OnboardingItem(
+                    image = "https://www.skyminds.net/wp-content/uploads/2007/07/socialisation-1-768x470.jpg",
+                    title = getString(R.string.onboarding_title_3),
+                    description = getString(R.string.onboarding_description_3)
+                )
+            )
+        )
+        onboardingViewPager.adapter = onboardingAdapter
+
+        val tabLayout = findViewById<TabLayout>(R.id.view_pager_indicator)
+        TabLayoutMediator(tabLayout, onboardingViewPager) { _, _ -> }.attach()
+
+        onboardingViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                if (position == onboardingAdapter.itemCount - 1) {
+                    nextButton.text = getString(R.string.finish)
+                } else {
+                    nextButton.text = getString(R.string.next)
+                }
+            }
+        })
+
+        nextButton.setOnClickListener {
+            if (onboardingViewPager.currentItem < onboardingAdapter.itemCount - 1) {
+                onboardingViewPager.currentItem += 1
+            } else {
+                // Mark onboarding as finished
+                val sharedPref = getSharedPreferences("onboarding", MODE_PRIVATE)
+                with(sharedPref.edit()) {
+                    putBoolean("finished", true)
+                    apply()
+                }
+                goToSignInActivity()
+            }
+        }
+    }
+
+    private fun onboardingFinished(): Boolean {
+        val sharedPref = getSharedPreferences("onboarding", MODE_PRIVATE)
+        return sharedPref.getBoolean("finished", false)
+    }
+
+    private fun goToSignInActivity() {
+        val intent = Intent(this, SignInActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
+
+    private fun requestNotificationPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) !=
+                PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 101)
+            }
+        }
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == 101) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_DENIED) {
+                Toast.makeText(this, "Les notifications sont désactivées. Vous pourriez manquer des messages importants.", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+}
