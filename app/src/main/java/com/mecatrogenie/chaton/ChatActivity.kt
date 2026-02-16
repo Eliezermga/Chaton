@@ -4,16 +4,16 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.EditText
-import android.widget.ImageButton
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.appbar.MaterialToolbar
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
@@ -36,10 +36,10 @@ class ChatActivity : AppCompatActivity() {
         val chatName = intent.getStringExtra("chatName")
 
         val rootLayout: ConstraintLayout = findViewById(R.id.root_layout)
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
+        val toolbar: MaterialToolbar = findViewById(R.id.toolbar)
         val messagesRecyclerView: RecyclerView = findViewById(R.id.messages_recycler_view)
         val messageEditText: EditText = findViewById(R.id.message_edit_text)
-        val sendButton: ImageButton = findViewById(R.id.send_button)
+        val sendButton: MaterialButton = findViewById(R.id.send_button)
 
         setSupportActionBar(toolbar)
         supportActionBar?.title = chatName
@@ -50,9 +50,14 @@ class ChatActivity : AppCompatActivity() {
         messagesRecyclerView.layoutManager = layoutManager
 
         ViewCompat.setOnApplyWindowInsetsListener(rootLayout) { view, windowInsets ->
-            val imeHeight = windowInsets.getInsets(WindowInsetsCompat.Type.ime()).bottom
-            view.setPadding(view.paddingLeft, view.paddingTop, view.paddingRight, imeHeight)
-            windowInsets
+            val insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.ime())
+
+            // Apply the insets as padding to the root layout.
+            // This will push the app bar down from the top and the input field up from the bottom.
+            view.setPadding(insets.left, insets.top, insets.right, insets.bottom)
+
+            // We've handled the insets, so we can return a consumed instance.
+            WindowInsetsCompat.CONSUMED
         }
 
         loadMessages(chatId, messagesRecyclerView)
