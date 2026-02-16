@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_app"
+    android:background="?attr/android:colorBackground"
     android:padding="20dp"
     tools:context=".SignInActivity">
 
@@ -26,7 +26,7 @@
         android:layout_marginTop="16dp"
         android:text="Chaton"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline3"
-        android:textColor="@color/text_primary"
+        android:textColor="?attr/android:textColorPrimary"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/subtitle_text"
         app:layout_constraintEnd_toEndOf="parent"
@@ -40,11 +40,22 @@
         android:layout_marginTop="8dp"
         android:text="@string/sign_in_subtitle"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-        android:textColor="@color/text_secondary"
-        app:layout_constraintBottom_toTopOf="@+id/sign_in_button"
+        android:textColor="?attr/android:textColorSecondary"
+        app:layout_constraintBottom_toTopOf="@+id/google_animation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title_text" />
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/google_animation"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        app:lottie_rawRes="@raw/google"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:layout_constraintBottom_toTopOf="@id/sign_in_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -52,11 +63,11 @@
         style="@style/Widget.Material3.Button.Icon"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/primary"
+        android:backgroundTint="?attr/colorPrimary"
         android:text="@string/sign_in_with_google"
-        android:textColor="@color/white"
+        android:textColor="?attr/colorOnPrimary"
         app:icon="@drawable/ic_google"
-        app:iconTint="@color/white"
+        app:iconTint="?attr/colorOnPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

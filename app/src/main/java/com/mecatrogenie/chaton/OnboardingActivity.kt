@@ -39,25 +39,25 @@ class OnboardingActivity : AppCompatActivity() {
         skipButton = findViewById(R.id.skip_button)
         getStartedButton = findViewById(R.id.get_started_button)
 
-        val onboardingAdapter = OnboardingAdapter(
-            listOf(
-                OnboardingItem(
-                    image = "https://www.skyminds.net/wp-content/uploads/2007/07/socialisation-1-768x470.jpg",
-                    title = getString(R.string.onboarding_title_1),
-                    description = getString(R.string.onboarding_description_1)
-                ),
-                OnboardingItem(
-                    image = "https://www.skyminds.net/wp-content/uploads/2007/07/socialisation-1-768x470.jpg",
-                    title = getString(R.string.onboarding_title_2),
-                    description = getString(R.string.onboarding_description_2)
-                ),
-                OnboardingItem(
-                    image = "https://www.skyminds.net/wp-content/uploads/2007/07/socialisation-1-768x470.jpg",
-                    title = getString(R.string.onboarding_title_3),
-                    description = getString(R.string.onboarding_description_3)
-                )
+        val onboardingItems = listOf(
+            OnboardingItem(
+                image = R.raw.messageeasy,
+                title = "Messagerie facile",
+                description = "Discutez avec vos amis et votre famille en toute simplicité."
+            ),
+            OnboardingItem(
+                image = R.raw.messagefun,
+                title = "Messagerie amusante",
+                description = "Exprimez-vous avec des emojis, des GIFs et des autocollants."
+            ),
+            OnboardingItem(
+                image = R.raw.mynotification,
+                title = "Notifications instantanées",
+                description = "Ne manquez jamais un message important."
             )
         )
+
+        val onboardingAdapter = OnboardingAdapter(onboardingItems)
         onboardingViewPager.adapter = onboardingAdapter
 
         val indicator = findViewById<CircleIndicator3>(R.id.dots_indicator)

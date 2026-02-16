@@ -49,11 +49,12 @@
         android:padding="32dp"
         android:visibility="visible">
 
-        <ImageView
+        <com.airbnb.lottie.LottieAnimationView
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/ic_no_chats"
-            app:tint="?attr/android:textColorSecondary" />
+            app:lottie_rawRes="@raw/notfound"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true" />
 
         <TextView
             android:layout_width="wrap_content"

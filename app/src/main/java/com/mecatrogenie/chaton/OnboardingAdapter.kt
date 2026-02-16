@@ -3,10 +3,9 @@ package com.mecatrogenie.chaton
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import coil.load
+import com.airbnb.lottie.LottieAnimationView
 
 class OnboardingAdapter(private val onboardingItems: List<OnboardingItem>) :
     RecyclerView.Adapter<OnboardingAdapter.OnboardingViewHolder>() {
@@ -31,12 +30,12 @@ class OnboardingAdapter(private val onboardingItems: List<OnboardingItem>) :
 
     inner class OnboardingViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        private val imageOnboarding = view.findViewById<ImageView>(R.id.onboarding_image)
+        private val imageOnboarding = view.findViewById<LottieAnimationView>(R.id.onboarding_image)
         private val textTitle = view.findViewById<TextView>(R.id.onboarding_title)
         private val textDescription = view.findViewById<TextView>(R.id.onboarding_description)
 
         fun bind(onboardingItem: OnboardingItem) {
-            imageOnboarding.load(onboardingItem.image)
+            imageOnboarding.setAnimation(onboardingItem.image)
             textTitle.text = onboardingItem.title
             textDescription.text = onboardingItem.description
         }

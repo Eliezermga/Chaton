@@ -8,19 +8,20 @@
     android:paddingEnd="20dp"
     android:paddingTop="32dp"
     android:paddingBottom="32dp"
-    android:background="@color/background_app">
+    android:background="?attr/android:colorBackground">
 
-    <ImageView
+    <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/onboarding_image"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="24dp"
-        android:contentDescription="@null"
         app:layout_constraintBottom_toTopOf="@+id/onboarding_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:src="@tools:sample/backgrounds/scenic" />
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        tools:lottie_rawRes="@raw/messagefun" />
 
     <TextView
         android:id="@+id/onboarding_title"
@@ -28,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
-        android:textColor="@color/text_primary"
+        android:textColor="?attr/android:textColorPrimary"
         android:textStyle="bold"
         android:gravity="center"
         app:layout_constraintBottom_toTopOf="@+id/onboarding_description"
@@ -42,7 +43,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
-        android:textColor="@color/text_secondary"
+        android:textColor="?attr/android:textColorSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

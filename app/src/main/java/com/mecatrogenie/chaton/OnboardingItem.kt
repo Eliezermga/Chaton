@@ -1,7 +1,9 @@
 package com.mecatrogenie.chaton
 
+import androidx.annotation.RawRes
+
 data class OnboardingItem(
-    val image: String,
+    @RawRes val image: Int,
     val title: String,
     val description: String
 )

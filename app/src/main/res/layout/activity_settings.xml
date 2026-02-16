@@ -67,6 +67,14 @@
                 android:text="@string/theme_dark" />
         </RadioGroup>
 
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="147dp"
+            android:layout_height="147dp"
+            android:layout_gravity="center_horizontal"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/setting" />
+
     </LinearLayout>
 
 </LinearLayout>
