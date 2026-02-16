@@ -1,0 +1,81 @@
+{
+  "design_system": {
+    "colors": {
+      "primary": "#8278F6",
+      "primary_variant": "#6A60E5",
+      "background_app": "#FAFAFF",
+      "surface_white": "#FFFFFF",
+      "text_primary": "#1A1B22",
+      "text_secondary": "#8A8A8E",
+      "text_on_primary": "#FFFFFF",
+      "status_online": "#34C759",
+      "badge_notification": "#8278F6",
+      "chat_bubble_sent": "#8278F6",
+      "chat_bubble_received": "#FFFFFF",
+      "search_bar_bg": "#FFFFFF"
+    },
+    "typography": {
+      "font_family": "Sans-serif (ex: Inter, Poppins, ou Roboto)",
+      "styles": {
+        "header_title": {
+          "size": "20sp",
+          "weight": "Bold"
+        },
+        "item_name": {
+          "size": "16sp",
+          "weight": "SemiBold"
+        },
+        "message_preview": {
+          "size": "14sp",
+          "weight": "Regular"
+        },
+        "timestamp": {
+          "size": "12sp",
+          "weight": "Medium"
+        },
+        "tab_active": {
+          "size": "14sp",
+          "weight": "Bold"
+        },
+        "tab_inactive": {
+          "size": "14sp",
+          "weight": "Regular"
+        }
+      }
+    },
+    "shapes": {
+      "corner_radius": {
+        "avatar": "50% (Circle)",
+        "search_bar": "24dp (Pill shape)",
+        "message_bubble": "16dp",
+        "bottom_nav_bar": "32dp (Pill shape)",
+        "floating_voice_card": "20dp",
+        "icon_button": "50% (Circle)"
+      }
+    },
+    "shadows_and_elevation": {
+      "bottom_nav": {
+        "elevation": "8dp",
+        "color": "#1A000000",
+        "blur_radius": "16dp"
+      },
+      "voice_note_card": {
+        "elevation": "12dp",
+        "color": "#1A000000",
+        "blur_radius": "24dp"
+      },
+      "received_message_bubble": {
+        "elevation": "2dp",
+        "color": "#0D000000",
+        "blur_radius": "4dp"
+      }
+    },
+    "layout_spacing": {
+      "screen_padding_horizontal": "20dp",
+      "item_spacing_vertical": "16dp",
+      "chat_bubble_padding": "12dp",
+      "avatar_size_list": "48dp",
+      "avatar_size_pinned": "64dp"
+    }
+  }
+}

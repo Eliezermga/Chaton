@@ -3,11 +3,16 @@
     <style name="Base.Theme.Chaton" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="android:windowLightStatusBar">true</item>
+        <item name="textAppearanceLargePopupMenu">@style/TextAppearance.Chaton.PopupMenu</item>
     </style>
 
     <style name="Theme.Chaton" parent="Base.Theme.Chaton" />
 
     <style name="Theme.Chaton.ChatActivity" parent="Theme.Chaton">
         <item name="android:windowFullscreen">false</item>
+    </style>
+
+    <style name="TextAppearance.Chaton.PopupMenu" parent="@style/TextAppearance.Material3.BodyMedium">
+        <item name="android:textSize">16sp</item>
     </style>
 </resources>

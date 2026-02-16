@@ -12,8 +12,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.button.MaterialButton
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import me.relex.circleindicator.CircleIndicator3
 
 class OnboardingActivity : AppCompatActivity() {
 
@@ -61,8 +60,8 @@ class OnboardingActivity : AppCompatActivity() {
         )
         onboardingViewPager.adapter = onboardingAdapter
 
-        val tabLayout = findViewById<TabLayout>(R.id.view_pager_indicator)
-        TabLayoutMediator(tabLayout, onboardingViewPager) { _, _ -> }.attach()
+        val indicator = findViewById<CircleIndicator3>(R.id.dots_indicator)
+        indicator.setViewPager(onboardingViewPager)
 
         onboardingViewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {

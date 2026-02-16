@@ -30,8 +30,9 @@ import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.mecatrogenie.chaton.user.User
+import androidx.appcompat.widget.SearchView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var chatsRecyclerView: RecyclerView
     private lateinit var noChatsLayout: LinearLayout
     private lateinit var newChatFab: FloatingActionButton
+    private var allChats = listOf<Chat>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -146,6 +148,7 @@ class MainActivity : AppCompatActivity() {
 
                 Tasks.whenAllComplete(chatTasks).addOnSuccessListener { completedTasks ->
                     val chats = completedTasks.mapNotNull { it.result as? Chat }
+                    allChats = chats
                     updateUI(chats)
                 }
             }
@@ -171,6 +174,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
+        val searchItem = menu?.findItem(R.id.action_search)
+        val searchView = searchItem?.actionView as? SearchView
+        searchView?.setOnQueryTextListener(this)
         return true
     }
 
@@ -182,10 +188,6 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.action_settings -> {
                 startActivity(Intent(this, SettingsActivity::class.java))
-                true
-            }
-            R.id.action_search -> {
-                Toast.makeText(this, "Search clicked", Toast.LENGTH_SHORT).show()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -227,6 +229,20 @@ class MainActivity : AppCompatActivity() {
         }
 
         notificationManager.notify(1 /* ID of notification */, notificationBuilder.build())
+    }
+
+    override fun onQueryTextSubmit(query: String?): Boolean {
+        return false
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        val filteredChats = if (newText.isNullOrBlank()) {
+            allChats
+        } else {
+            allChats.filter { it.otherUserName?.contains(newText, ignoreCase = true) == true }
+        }
+        updateUI(filteredChats)
+        return true
     }
 
     companion object {

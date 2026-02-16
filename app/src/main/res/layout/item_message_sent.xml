@@ -3,7 +3,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:paddingStart="64dp"
+    android:paddingEnd="8dp"
+    android:paddingTop="4dp"
+    android:paddingBottom="4dp"
+    android:clipToPadding="false">
 
     <TextView
         android:id="@+id/message_text"
@@ -12,6 +16,6 @@
         android:layout_gravity="end"
         android:background="@drawable/bg_message_sent"
         android:padding="12dp"
-        android:textColor="@android:color/white" />
+        android:textColor="@color/text_on_primary" />
 
 </LinearLayout>
