@@ -40,6 +40,6 @@ class ChatAdapter(private val chats: List<Chat>) : RecyclerView.Adapter<ChatAdap
         val chatIcon: ImageView = itemView.findViewById(R.id.chat_icon)
         val chatName: TextView = itemView.findViewById(R.id.chat_name)
         val lastMessage: TextView = itemView.findViewById(R.id.last_message)
-        val unreadDot: ImageView = itemView.findViewById(R.id.unread_dot)
+        val unreadDot: TextView = itemView.findViewById(R.id.unread_dot)
     }
 }

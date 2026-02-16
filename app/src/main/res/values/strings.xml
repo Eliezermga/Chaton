@@ -31,5 +31,9 @@
     <!-- Settings -->
     <string name="settings">Paramètres</string>
     <string name="enable_notifications">Activer les notifications</string>
+    <string name="theme">Thème</string>
+    <string name="theme_system">Système</string>
+    <string name="theme_light">Clair</string>
+    <string name="theme_dark">Sombre</string>
 
 </resources>

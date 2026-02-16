@@ -12,6 +12,8 @@ googleServices = "4.4.2"
 firebaseBom = "33.1.1"
 playServicesAuth = "21.2.0"
 coil = "2.6.0"
+circleindicator = "2.1.6"
+lottie = "6.7.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -28,6 +30,9 @@ firebase-firestore = { group = "com.google.firebase", name = "firebase-firestore
 firebase-messaging = { group = "com.google.firebase", name = "firebase-messaging-ktx" }
 play-services-auth = { group = "com.google.android.gms", name = "play-services-auth", version.ref = "playServicesAuth" }
 coil = { group = "io.coil-kt", name = "coil", version.ref = "coil" }
+coil-svg = { group = "io.coil-kt", name = "coil-svg", version.ref = "coil" }
+circleindicator = { group = "me.relex", name = "circleindicator", version.ref = "circleindicator" }
+lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
 
 
 [plugins]
