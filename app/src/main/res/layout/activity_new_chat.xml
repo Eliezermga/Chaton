@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_app"
+    android:background="?attr/android:colorBackground"
     tools:context=".NewChatActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="?attr/colorSurface"
         app:elevation="0dp">
 
         <com.google.android.material.appbar.MaterialToolbar
@@ -18,11 +18,11 @@
             style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
+            android:background="?attr/colorSurface"
             android:elevation="0dp"
-            android:theme="@style/ThemeOverlay.AppCompat.Light"
+            android:theme="?attr/toolbarStyle"
             app:title="@string/new_chat_title"
-            app:titleTextColor="@color/text_primary" />
+            app:titleTextColor="?attr/android:textColorPrimary" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
